@@ -2,6 +2,7 @@ package Regexp::Grammar::Internet;
 use Eirotic;
 use Regexp::Grammars;
 our ($AUTHORITY, $VERSION) = qw( 0.0.0 cpan:MARCC );
+# ABSTRACT: Grammars and rules to parse internet content
 
 qr{ <grammar: IP::Addr>
 
