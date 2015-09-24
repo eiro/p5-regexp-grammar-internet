@@ -7,7 +7,8 @@ my ($plan) = reverse map {
     state $count = 0;
     my ($yes,$no) = map $_||[], @{$_}[2,3];
     $count += ( @$yes * 2 ) + ( @$no * 1 );
-} my @suite = 
+} my @suite =
+
 ( [ decByte => qr{ <extends: IP::Addr> ^ <found=decByte> $  }x
     , [qw( 123 234 0 1 255 )]
     , [qw( 345 000 010 256 )] ]
@@ -30,6 +31,14 @@ my ($plan) = reverse map {
         ::FFFF:129.144.52.38
         )]
     , [qw(  )] ]
+
+, [ comment => qr{ <extends: IP::Addr> ^ <found=comment> $ }x
+    , ["; this is a comment" ]
+    , ["this is just a string"] ]
+
+# , [ hostname => qr{ <extends: IP::Addr> ^ <found=hostname> $ }x
+#     , [qw( host.example.com www.phear.org n0.re.re u and-.test )]
+#     , [qw( $this _haha )] ]
 
 );
 

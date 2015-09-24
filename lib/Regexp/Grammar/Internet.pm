@@ -39,5 +39,17 @@ qr{ <grammar: IP::Addr>
     #  IPv6reference  =  "[" IPv6address "]"
     <rule:IPv6reference> \[ <IPv6address> \]
 
+    <rule:comment> \; \N+
 
-}x
+
+}x;
+
+__END__
+
+
+
+
+
+
+
+
