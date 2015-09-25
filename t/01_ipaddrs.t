@@ -2,13 +2,10 @@ use Test::More;
 use Regexp::Grammars;
 use Regexp::Grammar::Internet;
 use Eirotic;
+use lib 't';
+use suite;
 
-my ($plan) = reverse map {
-    state $count = 0;
-    my ($yes,$no) = map $_||[], @{$_}[2,3];
-    $count += ( @$yes * 2 ) + ( @$no * 1 );
-} my @suite =
-
+my @test_atoms =
 ( [ decByte => qr{ <extends: IP::Addr> ^ <found=decByte> $  }x
     , [qw( 123 234 0 1 255 )]
     , [qw( 345 000 010 256 )] ]
@@ -44,27 +41,5 @@ my ($plan) = reverse map {
 
 );
 
-plan tests => $plan;
-
-for (@suite) {
-    my ($rule, $grammar, $yes, $no ) = @$_;
-
-    map {
-        ok
-        ( ($_ =~ $grammar)
-        , "$_ is a $rule");
-        ok
-        ( ($/{found} eq $_)
-        , "$_ matched")
-            or diag "$/{found}";
-    } @{ $yes || [] };
-
-    map {
-        ok
-        ( ($_ !~ $grammar)
-        , "$_ is not a $rule")
-            or diag "found $/{found}"
-    } @{ $no || [] };
-
-}
-
+plan tests => suite::count_atom_yn @test_atoms;
+suite::atom_yn for @test_atoms;
