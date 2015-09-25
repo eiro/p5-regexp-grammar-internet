@@ -39,8 +39,10 @@ qr{ <grammar: IP::Addr>
     #  IPv6reference  =  "[" IPv6address "]"
     <rule:IPv6reference> \[ <IPv6address> \]
 
-    <rule:comment> \; \N+
+    <rule:hostname> <.chunk=([a-z0-9][a-z0-9_-]*)>+ % \.
+    <rule:dnsname> <.hostname> \.
 
+    <rule:comment> \; \N+
 
 }x;
 
