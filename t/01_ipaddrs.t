@@ -47,6 +47,11 @@ my ($plan) = reverse map {
     , ["; this is a comment" ]
     , ["this is just a string"] ]
 
+, [ ttl => qr{ <extends: IP::Addr> ^ <found=ttl> $ }x
+    , [ '$TTL 3090'
+      , '$ttl   3090' ]
+    , ["this is just a string"] ]
+
 );
 
 

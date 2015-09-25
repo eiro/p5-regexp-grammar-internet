@@ -44,6 +44,8 @@ qr{ <grammar: IP::Addr>
 
     <rule:comment> \; \N+
 
+    <rule: ttl> \$ (?i: ttl ) \s+ (\d+) 
+
 }x;
 
 __END__
