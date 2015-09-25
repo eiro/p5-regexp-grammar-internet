@@ -42,18 +42,6 @@ my ($plan) = reverse map {
     , [qw( host.example.com. www.phear.org. n0.re.re. u. and-.test. )]
     , [qw( $this _haha )] ]
 
-
-# DNS zones specifics
-
-, [ comment => qr{ <extends: IP::Addr> ^ <found=comment> $ }x
-    , ["; this is a comment" ]
-    , ["this is just a string"] ]
-
-, [ ttl => qr{ <extends: IP::Addr> ^ <found=ttl> $ }x
-    , [ '$TTL 3090'
-      , '$ttl   3090' ]
-    , ["this is just a string"] ]
-
 );
 
 plan tests => $plan;

@@ -42,17 +42,12 @@ qr{ <grammar: IP::Addr>
     <rule:hostname> <.chunk=([a-z0-9][a-z0-9_-]*)>+ % \.
     <rule:dnsname>  <.hostname> \.
     <rule:comment>  \; \N+
-    <rule: ttl>     \$ (?i: ttl ) \s+ (\d+)
 
+    <rule:var>
+        \$ (?: <key=(ttl)>    \s+ <value=(\d+)>
+            |  <key=(origin)> \s+ <value=dnsname> )
 
-}x;
-
-__END__
-
-
-
-
-
+}x
 
 
 
