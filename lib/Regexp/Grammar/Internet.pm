@@ -40,11 +40,10 @@ qr{ <grammar: IP::Addr>
     <rule:IPv6reference> \[ <IPv6address> \]
 
     <rule:hostname> <.chunk=([a-z0-9][a-z0-9_-]*)>+ % \.
-    <rule:dnsname> <.hostname> \.
+    <rule:dnsname>  <.hostname> \.
+    <rule:comment>  \; \N+
+    <rule: ttl>     \$ (?i: ttl ) \s+ (\d+)
 
-    <rule:comment> \; \N+
-
-    <rule: ttl> \$ (?i: ttl ) \s+ (\d+) 
 
 }x;
 

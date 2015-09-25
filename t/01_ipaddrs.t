@@ -12,9 +12,11 @@ my ($plan) = reverse map {
 ( [ decByte => qr{ <extends: IP::Addr> ^ <found=decByte> $  }x
     , [qw( 123 234 0 1 255 )]
     , [qw( 345 000 010 256 )] ]
+
 , [ IPv4address => qr{ <extends: IP::Addr> ^ <found=IPv4address> $ }x
     , [qw( 234.0.1.255 )]
     , [qw( 0.1.255 234.0.1.255.2 345.000.010.256 )] ]
+
 , [ hexseq => qr{ <extends: IP::Addr> ^ <found=hexseq> $ }x
     , [qw( 23 0 f ff )]
     , [qw( fg -2 )] ]
@@ -53,9 +55,6 @@ my ($plan) = reverse map {
     , ["this is just a string"] ]
 
 );
-
-
-
 
 plan tests => $plan;
 
